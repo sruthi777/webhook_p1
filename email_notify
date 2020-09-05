@@ -3,11 +3,11 @@ notify('Started')
 	stage('checkout') {
     git 'https://github.com/sruthi777/petclinic.git'
 }
-stage('maven build') {
+stage('Maven Build') {
    sh label: '', script: '/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/M3.6.3/bin/mvn clean package'
 }    
 	
-stage('post build actions') {
+stage('Post Build Actions') {
 	archiveArtifacts artifacts: 'target/*.?ar', followSymlinks: false
 	junit 'target/surefire-reports/*.xml'
 }    
